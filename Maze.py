@@ -1,8 +1,9 @@
 import os
 import time
 import keyboard
-from MazeSolver_S import dfs
-# from MazeSolver_Q improt...
+from MazeSolver_S import dfs 
+from MazeSolver_Q import bfs
+
 class maze:
     def __init__(self) -> None:
         self.maze = [
@@ -133,5 +134,6 @@ if __name__ == '__main__':
         if keyboard.is_pressed("e"):
             print("Running DFS...")
             dfs(m)
-        #if keybord...
-        
+        if keyboard.is_pressed("r"):
+            print(".")
+            bfs(m) 
