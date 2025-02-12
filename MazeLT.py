@@ -1,6 +1,6 @@
-import os
 import keyboard
 import turtle
+from Position import pos
 from MazeSolver_S_LT import dfs 
 from MazeSolver_Q_LT import bfs
 
@@ -69,11 +69,6 @@ class Maze:
         self.turtle.write(">>>>> Congratulation!!! <<<<<", align="center", font=("Arial", 24, "normal"))
         self.screen.bye()
           
-class pos:
-    def __init__(self, y, x):
-        self.y = y
-        self.x = x
-
 if __name__ == '__main__':
     m = Maze()
     m.draw_maze()
