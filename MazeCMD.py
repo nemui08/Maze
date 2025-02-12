@@ -1,8 +1,8 @@
 import os
 import time
 import keyboard
-from MazeSolver_S import dfs 
-from MazeSolver_Q import bfs
+from MazeSolver_S_CMD import dfs 
+from MazeSolver_Q_CMD import bfs
 
 class maze:
     def __init__(self) -> None:
@@ -37,7 +37,7 @@ class maze:
     def printEND(self):
         os.system("cls")
         print("\n\n\n")
-        print(">>>>> Congraturation!!! <<<<<")
+        print(">>>>> Congratulation!!! <<<<<")
         print("\n\n\n")
         keyboard.wait("")
 
@@ -137,3 +137,4 @@ if __name__ == '__main__':
         if keyboard.is_pressed("r"):
             print(".")
             bfs(m) 
+            
