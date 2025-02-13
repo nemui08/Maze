@@ -82,6 +82,7 @@ class Maze:
             color = None
         if color:
             self.drop_bread_crumb(color)
+
     def is_exit(self, row, col):
         return (row == 0 or
             row == self.rows_in_maze - 1 or
@@ -111,20 +112,25 @@ class Maze:
             maze.update_position(start_row, start_column, DEAD_END)
         return found
 
+    def draw_message(self, message):
+        self.t.up()
+        self.t.goto(0, self.rows_in_maze / 2 + 1)  
+        self.t.color("blue")
+        self.t.write(message, align="center", font=("Arial", 24, "bold"))
+
     def run_maze(self):
         self.t.speed(1)  # speed (1 = slow, 10 = fast, 0 = fastest)
         found = self.search_from(self.start_row, self.start_col)
         if found:
-            print("Congratulation!!!")
+            self.draw_message("Congratulations!!!")
         else:
-            print("You are trapped!!!")
+            self.draw_message("You are trapped!!!")
 
 if __name__ == '__main__':
-    myMaze = Maze('Maze2.txt')  
+    myMaze = Maze('Maze2.txt') # Maze1.txt, Maze3.txt can be used in the future
     myMaze.draw_maze()  
     myMaze.update_position(myMaze.start_row, myMaze.start_col)  
     
     myMaze.run_maze()  
 
     myMaze.wn.mainloop()  
-
