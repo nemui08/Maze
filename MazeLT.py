@@ -35,7 +35,7 @@ class Maze:
         self.wn.setworldcoordinates(- (columns_in_maze- 1) / 2- .5,- (rows_in_maze- 1) / 2- .5,(columns_in_maze- 1) / 2 + .5,(rows_in_maze- 1) / 2 + .5)
         
     def draw_maze(self):
-        self.t.speed(10)
+        self.t.speed(0)
         for y in range(self.rows_in_maze):
             for x in range(self.columns_in_maze):
                 if self.maze_list[y][x] == OBSTACLE:
