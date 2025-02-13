@@ -135,6 +135,6 @@ if __name__ == '__main__':
             print("Running DFS...")
             dfs(m)
         if keyboard.is_pressed("r"):
-            print(".")
+            print("Running BFS...")
             bfs(m) 
             
