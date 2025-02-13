@@ -88,3 +88,36 @@ class Maze:
 
     def __getitem__(self,idx):
         return self.maze_list[idx]
+    
+    def search_from(maze, start_row, start_column):
+        maze.update_position(start_row, start_column)
+        if maze[start_row][start_column] == OBSTACLE:
+            return False
+        if maze[start_row][start_column] == TRIED or maze[start_row][start_column] == DEAD_END:
+            return False
+        if maze.is_exit(start_row, start_column):
+            maze.update_position(start_row, start_column, PART_OF_PATH)
+            return True
+        maze.update_position(start_row, start_column, TRIED)
+        found = Maze.search_from(maze, start_row-1, start_column) or \
+                Maze.search_from(maze, start_row+1, start_column) or \
+                Maze.search_from(maze, start_row, start_column-1) or \
+                Maze.search_from(maze, start_row, start_column+1)
+        if found:
+            maze.update_position(start_row, start_column, PART_OF_PATH)
+        else:
+            maze.update_position(start_row, start_column, DEAD_END)
+        return found
+
+if __name__ == '__main__':
+    myMaze = Maze('ComplexMaze.txt')  
+    myMaze.draw_maze()  
+    myMaze.update_position(myMaze.start_row, myMaze.start_col)  
+    
+    found = myMaze.search_from(myMaze.start_row, myMaze.start_col)  
+    if found:
+        print("เจอทางออกแล้ว! 🎉")
+    else:
+        print("ไม่มีทางออก 😢")
+
+    myMaze.wn.mainloop() 
