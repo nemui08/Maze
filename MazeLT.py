@@ -110,7 +110,7 @@ class Maze:
         return found
 
 if __name__ == '__main__':
-    myMaze = Maze('ComplexMaze.txt')  
+    myMaze = Maze('Maze2.txt')  
     myMaze.draw_maze()  
     myMaze.update_position(myMaze.start_row, myMaze.start_col)  
     
