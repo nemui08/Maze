@@ -64,10 +64,12 @@ class Maze:
 
     def drop_bread_crumb(self, color):
         self.t.dot(10, color) 
+    
     def update_position(self, row, col, val=None):
         if val:
             self.maze_list[row][col] = val
             self.move_turtle(col, row)
+            self.wn.update()
         if val == PART_OF_PATH:
             color = 'green'
         elif val == OBSTACLE:
@@ -109,15 +111,20 @@ class Maze:
             maze.update_position(start_row, start_column, DEAD_END)
         return found
 
+    def run_maze(self):
+        self.t.speed(1)  # speed (1 = slow, 10 = fast, 0 = fastest)
+        found = self.search_from(self.start_row, self.start_col)
+        if found:
+            print("Congratulation!!!")
+        else:
+            print("You are trapped!!!")
+
 if __name__ == '__main__':
     myMaze = Maze('Maze2.txt')  
     myMaze.draw_maze()  
     myMaze.update_position(myMaze.start_row, myMaze.start_col)  
     
-    found = myMaze.search_from(myMaze.start_row, myMaze.start_col)  
-    if found:
-        print("เจอทางออกแล้ว! 🎉")
-    else:
-        print("ไม่มีทางออก 😢")
+    myMaze.run_maze()  
 
-    myMaze.wn.mainloop() 
+    myMaze.wn.mainloop()  
+
